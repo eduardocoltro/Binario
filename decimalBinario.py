@@ -15,13 +15,33 @@ class Pilha:
             return None
         return self._vet.pop()
                 
-    def is_empty(self): # teste se é vazia
+    def is_empty(self):
         if len(self._vet) > 0:
             return False
         return True
         
-    def __len__(self): # retorna o total de itens
+    def __len__(self):
         return len(self._vet)
 
-    def __str__(self): # representacao da pilha como string
+    def __str__(self):
         return str(self._vet)
+p = Pilha()
+
+def ledec(n):
+    while True:
+        try:
+            b = int(input(n))
+        except(ValueError, TypeError):
+                print("Só pode colocar números inteiros!")
+                continue
+        else:
+                return b 
+
+dec = ledec("digite um número para conversão:")
+while dec > 0:
+    (dec, resto) = divmod(dec, 2)
+    p.push(resto)
+
+if len(p) > 0:
+    b = p.pop()
+    print(str(p))
